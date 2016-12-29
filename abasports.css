@@ -1,16 +1,28 @@
-/*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
-*/
-/* 
-    Created on : Jul 19, 2014, 1:20:05 AM
-    Author     : Bryan
-*/
-
 body{
     background-color: #000000;
     color: #ffffff;
+}
+
+.container{
+    margin-top: 10%;
+}
+
+.form-signin{
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+}
+
+#signButton{
+    max-width: 300px;
+    padding: 10px;
+    margin: 0 auto;
+}
+
+#logButton{
+    max-width: 300px;
+    padding: 10px;
+    margin: 0 auto;
 }
 
 .structureOuterWrapper{
@@ -41,17 +53,4 @@ position: relative;
 .bannerButtons {
 float: right;
 text-align: right;
-}
-
-div.img { /*from login*/
-    height: auto;
-    width: auto;
-    margin: 5px;
-    padding: 5px;
-    text-align: center;
-}
-
-div.login{ /*from login*/
-    text-align: center;
-    font-family: "Times New Roman", Times, serif;
 }
