@@ -1,10 +1,16 @@
 <?php
 
-    require_once 'DB_connect.php';
+    require_once('../ABASports/db.php');
     
-    function login($user, $pass){
-        $conn = adminDB();
-        $statement = $conn->prepare("SELECT * FROM users WHERE username=:user LIMIT 1");
+class login {
+    private $conn;    
+    
+    public function __construct(){
+        $this->conn = new db();
+    }
+    
+    public function loginUser($user, $pass){
+        $statement = $this->conn->prepare("SELECT * FROM users WHERE username=:user LIMIT 1");
         $statement->execute(array(':user'=>$user));
         $userRow = $statement->fetch(PDO::FETCH_ASSOC);
         if($statement->rowCount()> 0){
@@ -22,9 +28,9 @@
             $response["result"] = "Invalid Login Credentials";
             return json_encode($response);
         }
-    }//end login()
+    }//end loginUser()
     
-    function SignUp(){
+    public function SignUp(){
         $conn = adminDB();
         $user = $_POST['username'];
         $pass = $_POST['password'];
@@ -52,7 +58,7 @@
         }
     }//end SignUp();
     
-    function newUser($user, $pass){
+    public function newUser($user, $pass){
         $conn = adminDB();
         if(preg_match("#.*^(?=.{8,20})(?=.*[a-z])(?=.*[0-9]).*$#", $pass)){
           $hash = password_hash($pass, PASSWORD_DEFAULT);
@@ -70,3 +76,4 @@
                 return json_encode($response); //
             }
     }//end newUser()
+}//end class login
